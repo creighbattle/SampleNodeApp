@@ -12,6 +12,11 @@ const pool = new Pool({
 pool.connect().then(() => console.log('connected')).catch((e) => console.log(e));
 
 
+pool.query("create table testing(id bigserial primary key, name varchar(20)").then(() => {
+    pool.query("insert into testing (name) values ('Creigh')")
+})
+
+
 app.get('/', (req, res) => {
     res.send("Welcome to the home page baby");
 });
